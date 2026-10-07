@@ -5,6 +5,18 @@
 <section id="pick" class="screen hidden"><div class="content"><div class="gold">MISSION ACTIVATED</div><h1>Choose Your Card</h1><p>You only get <b>ONE</b> choice. Once you pick, the other two missions disappear. 👀</p><div class="cards"><button class="card" data-n="1"><div class="small">MYSTERY CARD</div><div class="num">1</div><b>TAP TO CHOOSE</b></button><button class="card" data-n="2"><div class="small">MYSTERY CARD</div><div class="num">2</div><b>TAP TO CHOOSE</b></button><button class="card" data-n="3"><div class="small">MYSTERY CARD</div><div class="num">3</div><b>TAP TO CHOOSE</b></button></div></div></section>
 <section id="result" class="screen hidden"><div class="reveal"><div class="gold">⚡ MISSION SELECTED ⚡</div><div id="emoji" class="emoji"></div><div id="which" class="small"></div><div id="activity" class="activity"></div><p id="desc"></p><h2>YOUR BIRTHDAY ADVENTURE AWAITS!</h2><p>Happy Birthday, Kent! ❤️<br><b>Love, Phylicia</b></p></div></section>
 </main><script>
+  const FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLSeDpxRCBiQuX6ue5zqHFqoe7eeQAo9qcIaOZcx7uuxic7jB5g/formResponse";
+
+function saveChoice(card){
+  const data=new FormData();
+  data.append("entry.694969075","Card "+card);
+
+  fetch(FORM_URL,{
+    method:"POST",
+    mode:"no-cors",
+    body:data
+  }).catch(()=>{});
+}
 const m={1:["🎮","ACTIVATE BALTIMORE","Get ready for a fun, competitive, interactive birthday adventure. Let's see who really has the skills. 😏"],2:["🚲","RAILBIKING","We're taking your birthday adventure outdoors. Get ready to pedal, explore, laugh, and enjoy the ride together."],3:["🥾","HIKING ADVENTURE","Lace up your shoes. We're heading out for a birthday hiking adventure together—fresh air, beautiful views, and quality time."]};
-const intro=document.querySelector("#intro"),pick=document.querySelector("#pick"),result=document.querySelector("#result");document.querySelector("#start").onclick=()=>{intro.classList.add("hidden");pick.classList.remove("hidden")};let chosen=false;document.querySelectorAll(".card").forEach(b=>b.onclick=()=>{if(chosen)return;chosen=true;const n=b.dataset.n,x=m[n];pick.classList.add("hidden");document.querySelector("#emoji").textContent=x[0];document.querySelector("#which").textContent="CARD "+n+" REVEALS…";document.querySelector("#activity").textContent=x[1];document.querySelector("#desc").textContent=x[2];result.classList.remove("hidden")});
+const intro=document.querySelector("#intro"),pick=document.querySelector("#pick"),result=document.querySelector("#result");document.querySelector("#start").onclick=()=>{intro.classList.add("hidden");pick.classList.remove("hidden")};let chosen=false;document.querySelectorAll(".card").forEach(b=>b.onclick=()=>{if(chosen)return;chosen=true;const n=b.dataset.n,x=m[n];saveChoice(n);pick.classList.add("hidden");document.querySelector("#emoji").textContent=x[0];document.querySelector("#which").textContent="CARD "+n+" REVEALS…";document.querySelector("#activity").textContent=x[1];document.querySelector("#desc").textContent=x[2];result.classList.remove("hidden")});
 </script></body></html>
