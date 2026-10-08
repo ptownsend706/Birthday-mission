@@ -19,4 +19,11 @@ function saveChoice(card){
 }
 const m={1:["🎮","ACTIVATE BALTIMORE","Get ready for a fun, competitive, interactive birthday adventure. Let's see who really has the skills. 😏"],2:["🚲","RAILBIKING","We're taking your birthday adventure outdoors. Get ready to pedal, explore, laugh, and enjoy the ride together."],3:["🥾","HIKING ADVENTURE","Lace up your shoes. We're heading out for a birthday hiking adventure together—fresh air, beautiful views, and quality time."]};
 const intro=document.querySelector("#intro"),pick=document.querySelector("#pick"),result=document.querySelector("#result");document.querySelector("#start").onclick=()=>{intro.classList.add("hidden");pick.classList.remove("hidden")};let chosen=false;document.querySelectorAll(".card").forEach(b=>b.onclick=()=>{if(chosen)return;chosen=true;const n=b.dataset.n,x=m[n];saveChoice(n);pick.classList.add("hidden");document.querySelector("#emoji").textContent=x[0];document.querySelector("#which").textContent="CARD "+n+" REVEALS…";document.querySelector("#activity").textContent=x[1];document.querySelector("#desc").textContent=x[2];result.classList.remove("hidden")});
-</script></body></html>
+</script>
+<audio id="birthdayMusic" src="Marvel%20Opening%20Theme%204.mp3" loop preload="auto"></audio>
+  <script>
+window.addEventListener("load", function() {
+  document.getElementById("birthdayMusic").play().catch(() => {});
+});
+</script>
+</body></html>
