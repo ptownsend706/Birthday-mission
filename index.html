@@ -22,7 +22,7 @@ const intro=document.querySelector("#intro"),pick=document.querySelector("#pick"
 document.getElementById("missionMusic").play().catch(() => {});pick.classList.remove("hidden")};let chosen=false;document.querySelectorAll(".card").forEach(b=>b.onclick=()=>{if(chosen)return;chosen=true;document.getElementById("missionMusic").pause();
 document.getElementById("cardMusic").play().catch(() => {});const n=b.dataset.n,x=m[n];saveChoice(n);pick.classList.add("hidden");document.querySelector("#emoji").textContent=x[0];document.querySelector("#which").textContent="CARD "+n+" REVEALS…";document.querySelector("#activity").textContent=x[1];document.querySelector("#desc").textContent=x[2];result.classList.remove("hidden")});
 </script>
-<audio id="birthdayMusic" src="Marvel20Theme20-%20Louder.mp3" loop preload="auto"></audio>
+<audio id="birthdayMusic" src="MarvelLouder.mp3" loop preload="auto"></audio>
 <audio id="missionMusic" src="Who%20Wants%20to%20be%20a%20Millionaire.mp3" loop preload="auto"></audio>
 <audio id="cardMusic" src="Sexyy%20Red.mp3" loop preload="auto"></audio>
 
