@@ -167,11 +167,11 @@ const activationScreen = document.getElementById("activation");
 const birthdayIntro = document.getElementById("intro");
 
 birthdayIntro.classList.add("hidden");
-document.getElementById("birthdayBalloons").style.display = "block";
 
 document.getElementById("activateHero").addEventListener("click", () => {
   activationScreen.classList.add("hidden");
   birthdayIntro.classList.remove("hidden");
+  document.getElementById("birthdayBalloons").style.display = "block";
 
   const marvelMusic = document.getElementById("birthdayMusic");
   if (marvelMusic) {
