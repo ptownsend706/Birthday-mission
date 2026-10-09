@@ -17,7 +17,13 @@ function saveChoice(card){
     body:data
   }).catch(()=>{});
 }
-const m={1:["🎮","ACTIVATE BALTIMORE","Get ready for a fun, competitive, interactive birthday adventure. Let's see who really has the skills. 😏"],2:["🚲","RAILBIKING","We're taking your birthday adventure outdoors. Get ready to pedal, explore, laugh, and enjoy the ride together."],3:["🥾","HIKING ADVENTURE","Lace up your shoes. We're heading out for a birthday hiking adventure together—fresh air, beautiful views, and quality time."]};
+  
+const m={
+  1:["🥾","HIKING ADVENTURE","I know how you haven't had time to go on hikes lately so this will be your opportunity. A birthday hiking adventure together—fresh air, beautiful views, and quality time."],
+  2:["🌽","CORN MAZE ADVENTURE","Get ready for a little adventure! We're heading into a corn maze to see if we can find our way out together. Let's see who has the better sense of direction! 😏"],
+  3:["🎮","ACTIVATE BALTIMORE","Get ready for a fun, competitive, interactive birthday adventure. Let's see who really has the skills. 😏"]
+};
+
 const intro=document.querySelector("#intro"),pick=document.querySelector("#pick"),result=document.querySelector("#result");document.querySelector("#start").onclick=()=>{intro.classList.add("hidden");document.getElementById("birthdayMusic").pause();
 document.getElementById("missionMusic").play().catch(() => {});pick.classList.remove("hidden")};let chosen=false;document.querySelectorAll(".card").forEach(b=>b.onclick=()=>{if(chosen)return;chosen=true;document.getElementById("missionMusic").pause();
 document.getElementById("cardMusic").play().catch(() => {});const n=b.dataset.n,x=m[n];saveChoice(n);pick.classList.add("hidden");document.querySelector("#emoji").textContent=x[0];document.querySelector("#which").textContent="CARD "+n+" REVEALS…";document.querySelector("#activity").textContent=x[1];document.querySelector("#desc").textContent=x[2];result.classList.remove("hidden")});
