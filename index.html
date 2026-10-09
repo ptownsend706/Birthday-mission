@@ -19,7 +19,7 @@
   height: 60px;
   background: radial-gradient(circle at 30% 25%, #7197ff, #4169E1 55%, #17368f);
   border-radius: 50% 50% 45% 45%;
-  animation: floatUp 9s linear infinite;
+  animation: floatUp 9s linear 1 forwards;
   opacity: 0.95;
   box-shadow: inset -6px -5px 10px rgba(0,0,0,0.2);
 }
@@ -45,10 +45,13 @@
 
 
 .balloon:nth-child(1) { left: 5%; animation-delay: 0s; }
-.balloon:nth-child(2) { left: 20%; animation-delay: 2s; }
-.balloon:nth-child(3) { left: 35%; animation-delay: 4s; }
-.balloon:nth-child(4) { left: 50%; animation-delay: 1s; }
-.balloon:nth-child(5) { left: 65%; animation-delay: 3s; }
+.balloon:nth-child(2) { left: 17%; animation-delay: 0.4s; }
+.balloon:nth-child(3) { left: 29%; animation-delay: 0.8s; }
+.balloon:nth-child(4) { left: 41%; animation-delay: 0.2s; }
+.balloon:nth-child(5) { left: 53%; animation-delay: 1s; }
+.balloon:nth-child(6) { left: 65%; animation-delay: 0.5s; }
+.balloon:nth-child(7) { left: 77%; animation-delay: 1.2s; }
+.balloon:nth-child(8) { left: 89%; animation-delay: 0.6s; }
 
 @keyframes floatUp {
   0% {
@@ -95,6 +98,7 @@
   
 
 <div class="balloon-container" id="birthdayBalloons" style="display:none;">
+  <span class="balloon"></span>
   <span class="balloon"></span>
   <span class="balloon"></span>
   <span class="balloon"></span>
@@ -173,7 +177,17 @@ birthdayIntro.classList.add("hidden");
 document.getElementById("activateHero").addEventListener("click", () => {
   activationScreen.classList.add("hidden");
   birthdayIntro.classList.remove("hidden");
-  document.getElementById("birthdayBalloons").style.display = "block";
+  const balloons = document.getElementById("birthdayBalloons");
+balloons.style.display = "block";
+
+balloons.querySelectorAll(".balloon").forEach(balloon => {
+  balloon.style.animation = "none";
+  void balloon.offsetWidth;
+  balloon.style.animation = "";
+});
+  setTimeout(() => {
+  balloons.style.display = "none";
+}, 10500);
 
   const marvelMusic = document.getElementById("birthdayMusic");
   if (marvelMusic) {
